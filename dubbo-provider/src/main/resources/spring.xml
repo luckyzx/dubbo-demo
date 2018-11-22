@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="com.test.dubboDemo.provider"/>
+    <bean id="testDubbo" class="com.test.dubboDemo.provider.TestDubboImp"/>
+    <!-- 开启AspectJ自动代理-->
+    <aop:aspectj-autoproxy />
+    <!--手动配置aop-->
+    <!--<aop:config>
+        &lt;!&ndash;定义切面&ndash;&gt;
+        <aop:aspect ref="testAspect">
+            &lt;!&ndash;定义切点&ndash;&gt;
+            <aop:pointcut id="testPointCut" expression="execution(* com.test.dubboDemo..*.*(..))"></aop:pointcut>
+            <aop:before method="doBefore" pointcut-ref="testPointCut"></aop:before>
+            <aop:after-throwing method="afterThrow" pointcut-ref="testPointCut" throwing="error"/>
+            <aop:after-returning method="afterReturn" pointcut-ref="testPointCut" returning="returnVal"/>
+            <aop:after method="doAfter"  pointcut-ref="testPointCut"/>
+            <aop:around method="arround" pointcut-ref="testPointCut"/>
+        </aop:aspect>
+    </aop:config>-->
+</beans>
